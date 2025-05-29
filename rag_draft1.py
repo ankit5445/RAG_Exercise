@@ -4,7 +4,8 @@ import os
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings   
-from langchain_community.vectorstores import DeepLake
+from llama_index.vector_stores.deeplake import DeepLakeVectorStore
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -30,6 +31,6 @@ dataset_path = f"hub://{my_activeloop_org_id}/{my_activeloop_dataset_name}"
 db = DeepLake(dataset_path=dataset_path, embedding_function=embeddings)
 db.add_documents(docs)
 
-print(db)
+
 
 
